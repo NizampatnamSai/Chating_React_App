@@ -1,0 +1,47 @@
+.Signup {
+    display: grid;
+    align-items: center;
+    height: 100vh;
+    background-color: white;
+}
+
+
+.Signup_inside {
+    background-color: black;
+   width: 80%;
+   justify-self: center;
+   height: 250px;
+   max-width: 500px;
+   
+}
+
+.Signup_inside form 
+{
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+}
+
+
+.Signup_inside form input
+{
+    margin-bottom: 10px;
+    outline: none;
+    border: none;
+    padding: 7px;
+    border-radius: 3px;
+
+}
+
+.Signup_inside form button
+{
+width: 75px;
+/* justify-items: center; */
+margin-left: auto;
+margin-right: auto;
+padding: 5px;
+
+}
