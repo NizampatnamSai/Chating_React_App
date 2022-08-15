@@ -10,7 +10,7 @@
     background-color: black;
    width: 80%;
    justify-self: center;
-   height: 250px;
+   height: 450px;
    max-width: 500px;
    
 }
@@ -29,10 +29,14 @@
 .Signup_inside form input
 {
     margin-bottom: 10px;
+    margin-top: 10px;
     outline: none;
     border: none;
-    padding: 7px;
+    padding: 10px;
     border-radius: 3px;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
 
 }
 
@@ -43,5 +47,66 @@ width: 75px;
 margin-left: auto;
 margin-right: auto;
 padding: 5px;
+margin-top: 10px;
+border-radius: 5px;
+background-color: aqua;
 
+
+}
+
+.Signup_inside form button:hover
+{
+background-color: rgb(250, 104, 104);
+}
+
+.Signup_inside p{
+    color: white;
+    margin-top: 10px;
+}
+
+.Signup_Loginbtn {
+    width: 75px;
+    padding: 7px;
+    background-color: green;
+    color: white;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+
+.Signup_Loginbtn:hover {
+    background-color: rgb(54, 138, 235);
+    
+
+}
+
+.signup_withGoogle img {
+    width: 50px;
+    margin-left: 5px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.Signup_inside small{
+    color: white;
+
+}
+
+.signup_withGoogle {
+    display: flex;
+    /* justify-u: center; */
+    /* place-content:; */
+    justify-content: center;
+
+}
+
+.Signup_passworddiv {
+    position: relative;
+}
+
+.Signup_visiblity_icon {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    color: black !important;
+    cursor: pointer;
 }

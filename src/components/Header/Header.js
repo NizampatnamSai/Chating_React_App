@@ -59,7 +59,7 @@ const Header = () => {
    
 let handleLogout=()=>{
     auth.signOut()
-    window.location.reload()
+    // window.location.reload()
 
 }
 
