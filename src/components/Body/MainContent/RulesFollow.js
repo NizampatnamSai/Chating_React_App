@@ -1,8 +1,14 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { groupInfoact } from '../../Redux/ReduxSlice'
+import { groupInfoact, Selectgroupinfo } from '../../Redux/ReduxSlice'
+import './RulesFollow.css'
+import { rules } from './Rules'
+import { useSelector } from 'react-redux'
+
 
 const RulesFollow = () => {
+  let selectgroupinfo=useSelector(Selectgroupinfo)
+
 
     let [askadminbtn,setAskadminBtn]=useState(false)
     let dispatch=useDispatch()
@@ -20,13 +26,23 @@ let handleeracegroupinfo=()=>{
         
         ))
 }
+
+
   return (
     <div className='MainContent_Inside_authentication'>
     
    <div className='MainContent_Inside_authentication_rules'>
-    Main datery Rules to follow before joining
+    Mandatery Rules to follow before joining {selectgroupinfo?.name} group
 
-  
+  <section className='Maincontent_RulesSection'>
+    <ul>
+    {rules?.map((item,indx)=>{
+      return(
+       <li key={indx}>{item}</li>
+      )
+    })}
+    </ul>
+  </section>
 
     
     <input type='checkbox'  onChange={handlecheckbox}
