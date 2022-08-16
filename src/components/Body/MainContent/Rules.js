@@ -1,5 +1,5 @@
 export const rules=[
-    'your Message shall not not hurt anyone',
+    'Your message shall not not hurt anyone',
     'You Shall not abuse anyone one at any cost',
     'Admin has authority to block your messages in the particular group',
     'You can delete your message within 2 days (48 hrs)',
