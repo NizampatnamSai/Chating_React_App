@@ -1,7 +1,7 @@
 .App {
   text-align: center;
 }
-
+/* 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -35,4 +35,22 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+
+.Loader {
+  display: grid;
+  align-items: center;
+  height: 100vh;
+  justify-items: center;
+}
+
+.Loader_inside img {
+  width: 250px;
+}
+
+.Loader_Spinner {
+  justify-self: center;
+  margin-left: 125px;
+  margin-top: 35px;
 }

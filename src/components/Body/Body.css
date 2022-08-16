@@ -1,0 +1,32 @@
+.Body_inside {
+    display: flex;
+    /* background-color: black; */
+}
+
+.Body_sidebar {
+    /* flex: 0.3; */
+    background-color: salmon;
+    color: white;
+    position: fixed;
+    width: 30%;
+    height: 94%;
+
+}
+
+.Body_Maincontent {
+    flex: 0.7;
+    /* overflow-y: scroll; */
+    margin-left: auto;
+}
+
+@media (min-width:950px){
+    .Body_sidebar {
+        width: 25%;
+
+      
+    }
+    
+    .Body_Maincontent {
+        flex: 0.75;
+    }
+}

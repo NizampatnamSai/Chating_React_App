@@ -11,13 +11,14 @@ const Signup = () => {
     password:''
   })
 
+  let [login,SetLogin]=useState(false)
 
   let [passwordVisible, setpasswordVisible]=useState(false)
     let handleSubmit=(e)=>{
      e.preventDefault()
      alert('submitted')
 
-
+  if (!login)  {
      auth.createUserWithEmailAndPassword(userinfo.mail,userinfo.password).then((userAuth)=>{
       userAuth.user.updateProfile({
         displayName:userinfo.name,
@@ -27,7 +28,6 @@ const Signup = () => {
         db.collection('users').add({
       name:userinfo.name,
       email:userinfo.mail,
-      // password:userinfo.password,
       active:true,
       img:''
            
@@ -35,25 +35,29 @@ const Signup = () => {
        })
     
     })
-   .catch(error=>alert(error))
+   .catch(error=>alert(error))}
+
+   else {
+ 
+ 
+      auth.signInWithEmailAndPassword(userinfo.mail,userinfo.password)
+      // .then (userAuth=>{
+      //   setSigninagain(true)
+       
+      // })
+ .catch(error=>alert(error))
+
+
+
+
+    
+   }
+
+
+
+
+
     }
-
-
-    // db.collection('suppliers').add({
-    //   name:suplyinfo.name,
-    //   email:suplyinfo.email,
-    //   password:suplyinfo.password,
-    //   active:true,
-    //   survingTable:''
-           
-   
-      
-     
-    //    })
-
-
-
-
 
 
     let handleInput=(e)=>{
@@ -67,16 +71,15 @@ const Signup = () => {
 
     }
 
-    // console.log(userinfo)
+   
 
     let googleSIgnin=()=>{
   auth.signInWithPopup(provider).then((res)=>{
-    // console.log(res)
-      // console.log(res.user.photoURL)
+   
     db.collection('users').add({
       name:res.user.displayName,
         email:res.user.email,
-      // password:userinfo.password,
+     
       active:true,
       img:res.user.photoURL
            
@@ -93,15 +96,33 @@ const Signup = () => {
       setpasswordVisible(!passwordVisible)
     }
 
+    let handleLoginpage=()=>{
+      SetLogin(!login)
+    }
+
   return (
     <div className='Signup'>
-      {/* Signup */}
-      <div className='Signup_inside'>
+     
+      <div className={ !login ?'Signup_inside':'Signup_inside Signup_inside_login'}>
+        {
+          login ?
+          <p>Please Login to precede further</p>:
+          <p>Please Signup to precede further</p>
+
+        }
         <form onSubmit={handleSubmit}
         >
-            <input placeholder='Enter your name' type='text'
+           
+           
+           {
+            !login &&
+           <input placeholder='Enter your name' type='text'
              name='name'  value={userinfo.name}
-             required  onChange={handleInput} />
+             required  onChange={handleInput} />}
+
+
+
+
             <input placeholder='Enter your email' type='email' 
              name='mail'  value={userinfo.mail}
              required onChange={handleInput}/>
@@ -127,27 +148,42 @@ const Signup = () => {
             </small>
             </div>
 
-            <button type='submit'>Signup</button>
+            <button type='submit'>{
+              login ? 'Login':"Signup"
+            }
+              
+              
+              </button>
         </form>
 
-        <p>Already Registred?
+        <p>{ login?'Not yet ' :'Already '}
+       
+        Registred?
+          
+          
 
-        <button className='Signup_Loginbtn'>Login</button>
 
         </p>
+        <button className='Signup_Loginbtn'
+        onClick={handleLoginpage}
+        >
+          {
+            login? 'Signup':'Login'
+          }
+          
+          </button>
+
         
-        <small>Or</small>
+        {/* <small>Or</small>
 
         <div className='signup_withGoogle'>
           <p>Signin with </p>
-        {/* <button> */}
           
           <img src='https://pbs.twimg.com/profile_images/1455185376876826625/s1AjSxph_400x400.jpg'
            alt='Goglr.png'  onClick={googleSIgnin}
            />
-        {/* </button> */}
         </div>
-       
+        */}
       </div>
     </div>
   )

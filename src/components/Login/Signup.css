@@ -10,9 +10,14 @@
     background-color: black;
    width: 80%;
    justify-self: center;
-   height: 450px;
+   height: 400px;
    max-width: 500px;
    
+}
+
+.Signup_inside_login {
+   height: 350px;
+
 }
 
 .Signup_inside form 
@@ -109,4 +114,8 @@ background-color: rgb(250, 104, 104);
     right: 25px;
     color: black !important;
     cursor: pointer;
+}
+
+.Signup button {
+    border: 2px solid white;
 }

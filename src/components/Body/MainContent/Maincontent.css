@@ -1,0 +1,54 @@
+/* .MainContent_Avatr {
+    background-color: rgb(20, 122, 157) !important;
+    color: red !important;
+}
+
+.MainContent_Avatar_div {
+    color: red !important;
+} */
+
+.MainContent_Avatar_div >button{
+    background-color: aqua;
+    border-radius: 50%;
+    border: 2px solid red;
+}
+
+.Maincontent_header {
+    height: 50px;
+    border-bottom: 1px solid lightgray;
+    padding: 30px;
+}
+
+.Maincontent_header {
+    display: flex;
+}
+
+
+.MainContent_Avatar_div {
+    display: flex;
+    align-items: center;
+    width: 40%;
+}
+.Maincontent_header {
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+
+}
+
+.MainContent_Avatar_div >span {
+    margin-left: 10px;
+}
+
+.Maincontent_Avatar {
+    cursor: pointer;
+    color: rgb(18, 18, 239) !important;
+    background-color: #301934 !important;
+    /* background-color: lightblue !important; */
+}
+
+
+.MainContent_Inside_authentication {
+    background-color: black;
+    color: white;
+}

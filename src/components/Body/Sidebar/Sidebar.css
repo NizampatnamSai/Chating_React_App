@@ -1,0 +1,81 @@
+.Sidebar_inside {
+    background-color: rgb(12, 188, 232);
+    margin-top: 25px;
+}
+
+.Sidebar_Input_div {
+    position: relative;
+}
+
+.Sidebar_updateicon {
+    position: absolute;
+    top: 5px;
+    right: 8px;
+    color: green;
+    /* width: fit-content; */
+    cursor: pointer;
+}
+
+.Sidebar_Input_div input {
+    outline: none;
+    border: none;
+    padding: 5px;
+    width: 90%;
+    border-radius: 5px;
+}
+
+.Sidebar_inside >p{
+    background-color: lightgreen;
+    color: black;
+    padding: 5px;
+}
+
+.Sidebar_Groupsinfo {
+    /* color: red; */
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+/* .Sidebar_Groupsinfo >span{ */
+  /* padding-top: 5px; */
+  /* background-color: red; */
+  /* padding-bottom: 5px; */
+  /* margin-bottom: 10px; */
+/* } */
+
+.Sidebar_p {
+    padding-top: 10px;
+}
+
+
+/* For SidebarGroupnames */
+/* .Sidebar_Groupsinfo_names { */
+
+    /* background-color: white; */
+/* } */
+
+.Sidebar_Groupnames {
+    background-color: salmon;
+    width: 95%;
+   margin-left: auto;
+   margin-right: auto;
+   border-radius: 5px;
+}
+
+.Sidebar_Groupnames_inside {
+    display: flex;
+    color: black;
+    margin-top: 10px;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px;
+}
+
+.Sidebar_Groupnames_inside span {
+    cursor: pointer;
+}
+
+.dashboard_btn {
+    margin: 7px 0px;
+    padding: 2px;
+    border: 2px solid white;
+}

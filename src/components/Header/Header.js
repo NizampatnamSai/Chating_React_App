@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import './Header.css'
+// import './Header.css'
 // import { useDispatch, useSelector } from 'react-redux'
 // import { insidesign, Selectloginsuplier, SelectUser, themes } from '../Redux/Redux_Slice'
 // import { Link, Navigate, useNavigate } from 'react-router-dom'
@@ -69,13 +69,16 @@ let handleLogout=()=>{
 
 
   return (
-    <div className='Header'>
+    <div className='Header'
+    style={{position:'sticky',top:'0px'
+    // , backgroundColor:'rgb(10,20,40)'
+    }}>
 
 
-        <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top ">
+        <nav className="navbar navbar-expand-lg bg-white ">
           <div className="container-fluid">
             <img className='restarent_img'
-              src='https://img.freepik.com/premium-vector/initial-dr-letter-logo-with-script-typography-vector-template-creative-script-letter-dr-logo-design_616200-715.jpg' alt='Devi restarent'
+              src='https://www.pngitem.com/pimgs/m/27-278960_ca-letter-logo-sign-hd-png-download.png' alt='Devi restarent'
             //   onClick={() => {
             //     navigate('/')
             //   }}
@@ -87,7 +90,9 @@ let handleLogout=()=>{
               
               
               />
-            <a className="nav-link active text-black Logo_name" aria-current="page">The Devi Residencies</a>
+            <a className="nav-link active text-black Logo_name" 
+            aria-current="page" style={{marginLeft:'10px'}}
+            >The Chating App</a>
 
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
@@ -125,7 +130,7 @@ let handleLogout=()=>{
                 
                 
                
-                <li className="nav-item dropdown">
+                {/* <li className="nav-item dropdown">
                   <a className="nav-link dropdown-toggle outline-secondary my-2 Signin_option" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Signin
                   </a>
@@ -153,10 +158,16 @@ let handleLogout=()=>{
              >
             <a className="dropdown-item" >
                       Signin as Admin </a> </li>  </ul>
-                </li>
+                </li> */}
+
+
+
                 <li className="nav-item logout_option">
-                <button type="button" className="btn btn-success btn-sm my-2 Logout_btn"
-           onClick={handleLogout} >Logout</button>
+                <button type="button" className="btn btn-success btn-sm my-2 Logout_btn m-3"
+           onClick={handleLogout} 
+           style={{}}
+           
+           >Logout</button>
                 </li>
 
                 <li className="nav-item dropdown Themes_option">
