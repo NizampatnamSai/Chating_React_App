@@ -1,0 +1,11 @@
+.GroupMembers_Inside >table {
+    display: flex;
+    justify-content: space-around;
+    /* width: 95%; */
+}
+
+.GroupMembers_table  tbody:nth-last-child(1){
+    color: green;
+    cursor: pointer;
+
+}

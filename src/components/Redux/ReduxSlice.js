@@ -4,10 +4,10 @@ export const ReduxSlice=createSlice({
     name:'reduxslice',
     initialState:{
         userinfo:[
-            'we'
+            
         ],
         groupinfo:[],
-        admininfo:false
+        admininfo:[]
 
         
 

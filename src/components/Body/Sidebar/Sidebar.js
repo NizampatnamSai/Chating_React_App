@@ -23,7 +23,7 @@ const Sidebar = () => {
 
   useEffect(()=>{
     db.collection('group').onSnapshot((snap)=>{
-      // console.log(data)
+      // console.log(snap)
       SetGroups(snap.docs.map((doc)=>({
         id:doc.id,
         data:doc.data()
@@ -74,8 +74,11 @@ const Sidebar = () => {
     }
 
     let handleDashboard=()=>{
-        dispatch( adminInfo(
-          true
+        dispatch( adminInfo({
+          active:true
+
+        }
+          
         ))
 
     }
@@ -92,7 +95,7 @@ const Sidebar = () => {
        
        }
 
-{users.email==='chatireactappadmin@gmail.com' &&  <p 
+{users.email==='chatireactappadmin@gmail.com' &&  <p className='Sidebar_createGroup'
        onClick={handleCreateGroup}
        >+ Create greoup</p> }
       

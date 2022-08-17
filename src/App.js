@@ -88,6 +88,7 @@ let [user,setUser]=useState([])
 
 let requerid;
 let reqemail;
+let reqname;
 // if(Array.isArray(user)){
   if(user){
 
@@ -97,12 +98,14 @@ let reqemail;
      )
      { requerid=userinformation.id;
       reqemail=userinformation.data.email;
+      reqname=userinformation.data.name
       
       
       dispatch(
                 userInfo({
                       userid:requerid,
-                  email:reqemail
+                  email:reqemail,
+                  name:reqname
                 })
               )
 

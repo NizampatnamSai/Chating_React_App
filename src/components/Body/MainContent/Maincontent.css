@@ -27,11 +27,11 @@
 .MainContent_Avatar_div {
     display: flex;
     align-items: center;
-    width: 40%;
+    /* width: 40%; */
 }
 .Maincontent_header {
     display: flex;
-    /* justify-content: space-between; */
+    justify-content: space-around;
     align-items: center;
 
 }

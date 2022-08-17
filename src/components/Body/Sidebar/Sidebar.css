@@ -79,3 +79,7 @@
     padding: 2px;
     border: 2px solid white;
 }
+
+.Sidebar_createGroup {
+    cursor: pointer;
+}

@@ -1,0 +1,20 @@
+
+
+.Dashboard_Inside {
+    display: flex;
+}
+
+.Dashboard_groupspart {
+    background-color: black;
+    color: white;
+    width: 25%;
+}
+
+.groupDashboard span{
+    cursor: pointer;
+}
+
+.Dashboard_grpmemberspart {
+    width: 75%;
+}
+
