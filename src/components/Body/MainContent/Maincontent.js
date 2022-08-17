@@ -174,9 +174,9 @@ let handleeracegroupinfo=()=>{
 
 
 
-                                      
-        <section>
-        members available in group {aprovedmem.length}
+
+        {/* <section>
+        members available in group {aprovedmem.length} */}
 
          {/* { Array.isArray(grpmembers)&& grpmembers?.map((item,indx)=>{
           return(
@@ -189,7 +189,7 @@ let handleeracegroupinfo=()=>{
           )
          })} */}
 
-         {
+         {/* {
         aprovedmem.map((item)=>{
           return(
             <div key={Math.random()}>
@@ -198,11 +198,11 @@ let handleeracegroupinfo=()=>{
           )
         })
          }
-         </section>
+         </section> */}
 
 
-         <section>
-          in process {procmem.length}
+         {/* <section>
+          in process {procmem.length} */}
          
 
          {/* { Array.isArray(grpmembers)&& grpmembers?.map((item,indx)=>{
@@ -217,7 +217,7 @@ let handleeracegroupinfo=()=>{
          })} */}
 
 
-{
+{/* {
         procmem.map((item)=>{
           return(
             <div key={Math.random()}>
@@ -227,7 +227,7 @@ let handleeracegroupinfo=()=>{
         })
          }
 
-         </section>
+         </section> */}
 
 
   {/* use this

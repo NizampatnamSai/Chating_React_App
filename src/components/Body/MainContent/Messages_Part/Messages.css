@@ -1,0 +1,59 @@
+/* .Messages { */
+    /* position: relative; */
+    /* background-color: black; */
+    /* height: 80%; */
+
+/* } */
+
+
+
+.Message_footer {
+    width: 70%;
+    background-color: rgb(241, 241, 244);
+    /* background-color: red; */
+    position: absolute;
+    bottom: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+   
+    height: 40px;
+}
+
+/* 
+.Messages_Inside{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+} */
+
+.Messages_messages {
+    background-color: red;
+}
+
+
+@media (min-width:950px){
+.Message_footer {
+    width: 75%;
+
+
+}
+}
+
+.Message_footer > input {
+    border: none;
+    outline: none;
+    padding: 7px;
+    border-radius: 10px;
+}
+
+.Message_send_Avatar {
+    cursor: pointer;
+    background: linear-gradient(135deg, rgb(0, 188, 242), rgb(0, 120, 212));
+}
+
+.Message_send_Avatar:hover {
+    background: linear-gradient(135deg, rgb(0, 120, 212), rgb(0, 120, 212));
+
+    }
