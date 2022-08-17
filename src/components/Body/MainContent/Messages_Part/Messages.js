@@ -6,6 +6,7 @@ import { db } from '../../../../Firebase';
 import { useSelector } from 'react-redux';
 
 import { selectadmininfo,Selectuserinfo } from '../../../Redux/ReduxSlice'
+import MessagesDisplay from './MessagesDisplay';
 
 const Messages = ({groupid}) => {
 
@@ -65,14 +66,28 @@ const Messages = ({groupid}) => {
       })))
     })
       
-  },[])
+  },[groupid])
 
   console.log(messages)
   return (
     <div className='Messages'>
       <div className='Messages_Inside'>
         <div className='Messages_messages'>
-      Messages display
+      {/* Messages display */}
+
+      {Array.isArray(messages) && messages?.map((item)=>{
+        return(
+          <div key={item.id}>
+            <MessagesDisplay messid={item.id}
+            message={item.data.message} senderid={item.data.senderid}
+            sendermail={item.data.sendermail} sentby={item.data.sentby}
+            time={item.data.time} dislikes={item.data.dislikes}
+            likes={item.data.likes} loves={item.data.loves}
+            
+            />
+            </div>
+        )
+      })}
 
           
         </div>

@@ -1,0 +1,30 @@
+/* .MessagesDisplay_Inside {
+
+
+height: 40px;
+} */
+
+
+.MessagesDisplay_message {
+    background-color: lightblue;
+    margin-right: auto;
+    width: 45%;
+    /* width: fit-content; */
+height: 50px;
+border-radius: 15px;
+margin-top: 5px;
+
+
+}
+
+.MessagesDisplay_message_own {
+    background-color: rgb(56, 181, 223);
+    margin-left: auto;
+    width: 45%;
+    /* width: fit-content; */
+
+height: 40px;
+    /* align-self: center; */
+border-radius: 15px;
+margin-top: 5px;
+}

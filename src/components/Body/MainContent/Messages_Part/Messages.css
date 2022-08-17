@@ -9,7 +9,7 @@
 
 .Message_footer {
     width: 70%;
-    background-color: rgb(241, 241, 244);
+    background-color: rgb(194, 194, 233);
     /* background-color: red; */
     position: absolute;
     bottom: 0px;
@@ -28,9 +28,9 @@
 
 } */
 
-.Messages_messages {
+/* .Messages_messages {
     background-color: red;
-}
+} */
 
 
 @media (min-width:950px){

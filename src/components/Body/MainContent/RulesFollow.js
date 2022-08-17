@@ -8,7 +8,8 @@ import { useSelector } from 'react-redux'
 import { auth, db } from '../../../Firebase'
 // import { useAuthState } from 'react-firebase-hooks/auth'
 // import { ToastContainer, toast } from 'react-toastify';
-
+// import 'react-toastify/dist/ReactToastify.css';
+// 
 
 const RulesFollow = () => {
   let selectgroupinfo=useSelector(Selectgroupinfo)
@@ -53,6 +54,7 @@ let handleAskAdmin=()=>{
     userid:usersid,
     active:false,
     name:username,
+    block:false,
   })
 
 }
