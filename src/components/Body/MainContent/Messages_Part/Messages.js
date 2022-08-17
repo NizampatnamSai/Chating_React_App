@@ -85,6 +85,8 @@ const Messages = ({groupid}) => {
             likes={item.data.likes} loves={item.data.loves}
             
             />
+
+            
             </div>
         )
       })}

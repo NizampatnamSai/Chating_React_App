@@ -7,10 +7,13 @@ height: 40px;
 
 .MessagesDisplay_message {
     background-color: lightblue;
+    /* background-color: rgb(196, 192, 192); */
+
+    /* color: white; */
     margin-right: auto;
     width: 45%;
     /* width: fit-content; */
-height: 50px;
+min-height: 50px;
 border-radius: 15px;
 margin-top: 5px;
 
@@ -19,12 +22,30 @@ margin-top: 5px;
 
 .MessagesDisplay_message_own {
     background-color: rgb(56, 181, 223);
-    margin-left: auto;
-    width: 45%;
+    margin-left: auto ;
+    width: 45% ;
     /* width: fit-content; */
 
-height: 40px;
+ min-height: 50px;
     /* align-self: center; */
 border-radius: 15px;
 margin-top: 5px;
+}
+
+.Messagesdisplay_infotop {
+    width: 150px;
+    /* border: 1px solid salmon; */
+    font-size: small;
+    padding: 3px;
+}
+
+.Messagesdisplay_infobottom {
+    width: 150px;
+    margin-left: auto;
+    /* border: 1px solid salmon; */
+    font-size: small;
+    padding: 3px;
+
+
+
 }

@@ -2,6 +2,8 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { Selectuserinfo } from '../../../Redux/ReduxSlice'
 import './MessagesDisplay.css'
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+
 
 const MessagesDisplay = ({
     messid,message,senderid,sendermail,sentby,time,dislikes,likes,loves}) => {
@@ -20,13 +22,21 @@ let ownmessage=false;
     <div className='MessagesDisplay'>
         <div 
         // className='MessagesDisplay_Inside'>
-        className={ownmessage ? 'MessagesDisplay_message_own': 'MessagesDisplay_message'}>
+        className={ownmessage ? ' MessagesDisplay_message_own': 'MessagesDisplay_message'}>
 
             {/* messages likw watspp */}
+            <div className='Messagesdisplay_infotop'>
+            {ownmessage ? 'You': sentby}
+                </div>
             <div >
 
-             {/* className={ownmessage ? 'MessagesDisplay_message_own': 'MessagesDisplay_message'}> */}
-            {message}
+            
+            {message} <MoreVertIcon/>
+            
+
+            </div>
+            <div className='Messagesdisplay_infobottom'>
+                {time}
 
             </div>
         </div>
