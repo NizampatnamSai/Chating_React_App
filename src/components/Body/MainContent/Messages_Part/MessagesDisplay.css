@@ -70,4 +70,10 @@ margin-top: 5px;
 .Messagesdisplay_messagepart_moreinfo {
     margin-right: 5px;
     cursor: pointer;
+    position: relative;
+}
+
+.Messagesdisplay_messagepart_moreinfo_dis {
+    position: absolute;
+    top: 0px;
 }
