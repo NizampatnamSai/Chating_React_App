@@ -7,7 +7,8 @@ import { useSelector } from 'react-redux';
 
 import { selectadmininfo,Selectuserinfo } from '../../../Redux/ReduxSlice'
 import MessagesDisplay from './MessagesDisplay';
-
+import MicOutlinedIcon from '@mui/icons-material/MicOutlined';
+import MicOffIcon from '@mui/icons-material/MicOff';
 const Messages = ({groupid}) => {
 
   let [input,setInput]=useState('')
@@ -103,19 +104,16 @@ const Messages = ({groupid}) => {
         <input  placeholder='type a message' value={input} onChange={handleInputchange}/>
          <button>mics</button>
          {input && 
-        //  <button
-        //  onClick={handlesubmitmessage}
-        //  >
+        //use mic here 
           <Avatar  className='Message_send_Avatar' onClick={handlesubmitmessage}> 
         
-        {/* {username[0].toUpperCase()}{username[1].toUpperCase()  } */}
-        {/* {`->`} */}
+        
 
         <SendIcon />
 
          
         </Avatar>
-          // </button>
+         
           }
       </div>
 

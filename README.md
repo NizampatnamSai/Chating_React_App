@@ -68,3 +68,11 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+<!-- Vercel disployment link -->
+https://vercel.com/new/success?developer-id=&external-id=&redirect-url=&branch=main&deploymentUrl=chati-react-chat-hqg0anvrv-nizampatnamsai.vercel.app&projectName=chati-react-chat-app
+
+
+<!-- Actual Link -->
+https://chati-react-chat-app.vercel.app/

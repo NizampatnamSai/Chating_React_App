@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { Selectuserinfo } from '../../../Redux/ReduxSlice'
+import { Selectadmininfo, Selectgroupinfo, Selectuserinfo } from '../../../Redux/ReduxSlice'
 import './MessagesDisplay.css'
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 
@@ -12,7 +12,15 @@ const MessagesDisplay = ({
     //     time,dislikes,likes,loves)
       
         let selectuserinfo=useSelector(Selectuserinfo)
+        // let selectadmininfo=useSelector(Selectadmininfo)
+        let selectgroupinfo=useSelector(Selectgroupinfo)
         // console.log(selectuserinfo.email)
+
+        let admin=false;
+
+        if (sendermail=== selectgroupinfo?.admin){
+            admin=true;
+        }
 let ownmessage=false;
         if(selectuserinfo.email===sendermail) { ownmessage=true}
 
@@ -26,12 +34,19 @@ let ownmessage=false;
 
             {/* messages likw watspp */}
             <div className='Messagesdisplay_infotop'>
-            {ownmessage ? 'You': sentby}
-                </div>
-            <div >
-
+            {ownmessage ? 'You': admin? 'Admin':
             
-            {message} <MoreVertIcon/>
+            
+            sentby}
+                </div>
+            <div className='Messagesdisplay_messagepart'>
+
+            <div className='Messagesdisplay_messagepart_message'>
+            {message}
+            </div>
+
+            <div className='Messagesdisplay_messagepart_moreinfo'>
+             <MoreVertIcon/></div>
             
 
             </div>
