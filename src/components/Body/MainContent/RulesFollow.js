@@ -4,10 +4,11 @@ import { groupInfoact, Selectgroupinfo, Selectuserinfo, userInfo } from '../../R
 import './RulesFollow.css'
 import { rules } from './Rules'
 import { useSelector } from 'react-redux'
+import emailjs  from 'emailjs-com';
 
 import { auth, db } from '../../../Firebase'
 // import { useAuthState } from 'react-firebase-hooks/auth'
-// import { ToastContainer, toast } from 'react-toastify';
+import {  toast } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
 // 
 
@@ -98,43 +99,44 @@ if(Array.isArray(grpmembers)){
 // console.log(grpmemstatuscheck,grpmemblockcheck)
 
 
-
+let [emailsent,setEmailsent]=useState(false)
 
 let submitFeedbackForm=(e)=>{
    
   e.preventDefault()
-  // console.log(e.target)
-  // emailjs.sendForm(
-  //   'service_18f6qgg',
-  //   'template_4280pt1',
-  //   e.target,
-  //   'XIyoA13Wr3KbW0VjW'
-  // )
-  // .then(res=>{
-  //   console.log(res)
-  //   toast.success('Succesfully sent the feedback', {
-  //     position: "top-right",
-  //     autoClose: 5000,
-  //     hideProgressBar: false,
-  //     closeOnClick: true,
-  //     // pauseOnHover: true,
-  //     draggable: true,
-  //     progress: undefined,
-  //     });
-  //   // alert('Succesfully sent the feedback')
+  console.log(e.target)
+  emailjs.sendForm(
+    'service_18f6qgg',
+    'template_4280pt1',
+    e.target,
+    'XIyoA13Wr3KbW0VjW'
+  )
+  .then(res=>{
+    console.log(res)
+    setEmailsent(true)
+    toast.success('Succesfully sent the mail', {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      // pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      });
+    // alert('Succesfully sent the feedback')
     
-  // }).catch(error=>{
-  //   console.log(error)
-  //   toast.warn('Oops some thing went wrong', {
-  //     position: "top-right",
-  //     autoClose: 5000,
-  //     hideProgressBar: false,
-  //     closeOnClick: true,
-  //     pauseOnHover: true,
-  //     draggable: true,
-  //     progress: undefined,
-  //     });
-  // })
+  }).catch(error=>{
+    console.log(error)
+    toast.warn('Oops some thing went wrong', {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      });
+  })
 }
   return (
     <div className='MainContent_Inside_authentication'>
@@ -152,12 +154,14 @@ let submitFeedbackForm=(e)=>{
     </ul>
   </section>
 
-    
+    {grpmembercheck ? 'You Acsepted the rules':<>
     <input type='checkbox'  onChange={handlecheckbox} value={true}
     />  I Acknowledge & Accepted
       
 
       <button onClick={handleeracegroupinfo}>I Quit</button>
+      </>}
+
     </div>
 
 <div>
@@ -172,8 +176,9 @@ let submitFeedbackForm=(e)=>{
 
     
 <div>
+{emailsent ? 'You sent the Email to the Admin please wait until Admin allow !':
 
-
+<div>
     Your Response is sent to the group admin , it will take time to add you. 
     Want fast responce? Mail him .
 
@@ -184,12 +189,12 @@ let submitFeedbackForm=(e)=>{
   <div className="form-group m-2">
     <label >Your Name</label>
     <input type="name" className="form-control col-md-5 col-12" id="exampleFormControlInput1"
-     placeholder="write your name here" required name='user_name'/>
+     placeholder="write your name here" required name='user_name' value={username}/>
   </div>
   <div className="form-group m-2">
     <label>Email address</label>
     <input type="email" className="form-control" id="exampleFormControlInput1" 
-    placeholder="write your email address here" required name='user_email'/>
+    placeholder="write your email address here" required name='user_email' value={useremail}/>
   </div>
 
 
@@ -202,6 +207,8 @@ let submitFeedbackForm=(e)=>{
 </form>
 
 
+
+</div>}
 
 </div>:
 ''

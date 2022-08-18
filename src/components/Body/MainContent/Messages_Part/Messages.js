@@ -1,5 +1,5 @@
 import { Avatar } from '@material-ui/core'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './Messages.css'
 import SendIcon from '@mui/icons-material/Send';
 import { db } from '../../../../Firebase';
@@ -9,39 +9,139 @@ import { selectadmininfo,Selectuserinfo } from '../../../Redux/ReduxSlice'
 import MessagesDisplay from './MessagesDisplay';
 import MicOutlinedIcon from '@mui/icons-material/MicOutlined';
 import MicOffIcon from '@mui/icons-material/MicOff';
+import {useCollection, useDocument} from 'react-firebase-hooks/firestore'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
+
+
 const Messages = ({groupid}) => {
 
-  let [input,setInput]=useState('')
+
+  const [roomMessage,loading]=useCollection(
+    groupid && db.collection('group').doc(groupid).collection('messages').orderBy('time','asc')
+)
+
+  const Chatref=useRef(null)
+  useEffect(()=>{
+    Chatref?.current?.
+    scrollIntoView(
+      false
+      // { block: 'end',  behavior: 'smooth' }
+    )
+
+},[groupid,loading])
+
+
+
+
+  let [input,setInput]=useState({
+    text:'',
+    mic:'',
+    combine:''
+  })
   let selectuserinfo=useSelector(Selectuserinfo)
-  // Selectuserinfo
-
   let handleInputchange=(e)=>{
-    setInput(e.target.value)
+    let micinp=input.combine
+    setInput({
+      ...input,
+      text:e.target.value,
+      combine:(`${input.text}${micinp}`)
+    })
   }
- 
-  let date=new Date()
+
  
 
+
+
+
+// Mic part
+
+let [micon,setMicon]=useState(false)
+
+
+let handlemiconbtn=()=>{
+  setMicon(false)
+  alert('mic is off now ')
+  SpeechRecognition.stopListening()
+
+
+
+}
+
+let {
+  transcript,
+  interimTranscript,
+  finalTranscript,
+  resetTranscript,
+  listening,
+} = useSpeechRecognition();
+
+let [language, setLanguage] = useState(
+  {
+    code: 'te',
+    name: 'telugu'
+  })
+
+let handlemicoffbtn = () => {
+  alert('Mic is on, please speck to record')
+  setMicon(true)
+
+
+  // let language='en'
+  SpeechRecognition.startListening({
+    continuous: true,
+    language: language.code,
+  })
+
+  let micinp=input.text
+  setInput({
+    ...input,
+    mic:transcript,
+    combine:(`${input.mic}${micinp}`)
+  })
+
+  //  console.log(transcript)
+
+
+}
+
+// console.log(input.combine)
+
+
+
+
+let functiondate=()=>{
+
+  let date=new Date()
   let newdate=`${date}`
 
 
   let dateformat=newdate.split(' ')
   let hrestime=dateformat[4].split(':')
+ 
   
   let reqsendtime;
   if(hrestime[0]>12){
-    reqsendtime=(`${hrestime[0]-12}:${hrestime[1]} pm`)
+    reqsendtime=(`${hrestime[0]-12}:${hrestime[1]}:${hrestime[2]} pm`)
   }
-  else  reqsendtime=(`${hrestime[0]} am`)
+  else  reqsendtime=(`${hrestime[0]} :${hrestime[1]}:${hrestime[2]} am`)
   
-  let reqdate=`${dateformat[1]} ${dateformat[2]} ${dateformat[3]} ${reqsendtime}`
-// console.log(reqdate)
+  return `${dateformat[1]} ${dateformat[2]} ${dateformat[3]} ${reqsendtime}`
+
+
+}
+
+
+  // Date part
+ 
 
   let handlesubmitmessage=()=>{
+    let reqdate=functiondate()
 
     db.collection('group').doc(groupid).collection('messages').add({
       time:reqdate,
-      message:input,
+      message:(input.text),
       loves:0,
       likes:0,
       dislikes:0,
@@ -51,16 +151,53 @@ const Messages = ({groupid}) => {
 
     })
 
-    alert(`message ${input} sent`)
-    setInput('')
+    
+
+  .then(res=>{
+      // console.log(res)
+      toast.success(`message sent`, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        // pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });
+      // alert('Succesfully sent the feedback')
+      
+    }).catch(error=>{
+      console.log(error)
+      toast.warn('Oops some thing went wrong see the console for error!', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });
+
+
+    // alert(`message ${input} sent`)
  
   }
+  )
+  setInput({
+    ...input,
+    text:''
+  })
+
+}
+
 
 
   let [messages,setMessages]=useState([])
 
   useEffect(()=>{
-    db.collection('group').doc(groupid).collection('messages').onSnapshot((snap)=>{
+    db.collection('group').doc(groupid).collection('messages').orderBy('time','asc').onSnapshot((snap)=>{
+
+    // db.collection('group').doc(groupid).collection('messages').onSnapshot((snap)=>{
       setMessages(snap.docs.map((item)=>({
         id:item.id,
         data:item.data()
@@ -69,11 +206,38 @@ const Messages = ({groupid}) => {
       
   },[groupid])
 
-  console.log(messages)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// console.log(window.scrollY)
+
   return (
     <div className='Messages'>
       <div className='Messages_Inside'>
-        <div className='Messages_messages'>
+        <div className='Messages_messages' ref={Chatref}>
       {/* Messages display */}
 
       {Array.isArray(messages) && messages?.map((item)=>{
@@ -86,7 +250,6 @@ const Messages = ({groupid}) => {
             likes={item.data.likes} loves={item.data.loves}
             
             />
-
             
             </div>
         )
@@ -101,9 +264,20 @@ const Messages = ({groupid}) => {
 
       <div className='Message_footer'>
         {/* Have to use react mic */}
-        <input  placeholder='type a message' value={input} onChange={handleInputchange}/>
-         <button>mics</button>
-         {input && 
+        <input  placeholder='type a message' value={input.text} onChange={handleInputchange}/>
+          
+        
+
+        <div className={micon? 'micpart_oned':'micpart_offed'}>
+         {micon ? 
+         <MicOutlinedIcon onClick={handlemiconbtn}/>: 
+         
+         
+         <MicOffIcon onClick={handlemicoffbtn}/>}
+</div>
+
+
+         {input.text && 
         //use mic here 
           <Avatar  className='Message_send_Avatar' onClick={handlesubmitmessage}> 
         

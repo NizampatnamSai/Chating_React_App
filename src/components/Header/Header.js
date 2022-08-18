@@ -70,12 +70,13 @@ let handleLogout=()=>{
 
   return (
     <div className='Header'
-    style={{position:'sticky',top:'0px'
+    style={{position:'sticky',top:'0px',
+    // color:'white'
     // , backgroundColor:'rgb(10,20,40)'
     }}>
 
 
-        <nav className="navbar navbar-expand-lg bg-white ">
+        <nav className="navbar navbar-expand-lg  ">
           <div className="container-fluid">
             <img className='restarent_img'
               src='https://www.pngitem.com/pimgs/m/27-278960_ca-letter-logo-sign-hd-png-download.png' alt='Devi restarent'

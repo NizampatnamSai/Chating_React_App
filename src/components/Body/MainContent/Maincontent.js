@@ -10,6 +10,11 @@ import RulesFollow from './RulesFollow'
 import Dashboard from '../Dashboard/Dashboard'
 // import { MessageSharp } from '@mui/icons-material'
 import Messages from './Messages_Part/Messages'
+import BlockIcon from '@mui/icons-material/Block';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import DoneIcon from '@mui/icons-material/Done';
+import GroupAddIcon from '@mui/icons-material/GroupAdd';
+
 
 const Maincontent = () => {
 
@@ -144,11 +149,19 @@ let handleeracegroupinfo=()=>{
           <button onClick={handleeracegroupinfo}>back</button>
           
           
-          : grpmembercheck ?blockmen.includes(selectusersinfo?.name)? 'Blocked': 
+          : grpmembercheck ?blockmen.includes(selectusersinfo?.name)? 
           
-          aprovedmem.includes(selectusersinfo?.name)?'Aproved': 
-           'Pending'
-          :'Not a member'
+          <span className='Span_Showblock'><BlockIcon/> Blocked</span>
+          : 
+          
+          aprovedmem.includes(selectusersinfo?.name)?
+          <span className='Span_ShowAproved'><DoneIcon/> Approved</span>
+          : <span className='Span_Showpending'><AccessTimeIcon/> Pending
+
+          </span>
+           
+          :
+          <span className='Span_Shownotamember'><GroupAddIcon/> Not a member</span>
 
           
           

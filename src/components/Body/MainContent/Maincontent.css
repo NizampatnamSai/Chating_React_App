@@ -53,3 +53,25 @@
     color: white;
 }
 
+.MainContent_Inside_display {
+    overflow-y: scroll;
+    height: 460px;
+    /* height: 50%; */
+}
+
+
+.Span_Shownotamember {
+    color: blue;
+}
+
+.Span_Showblock {
+    color: red;
+}
+
+.Span_ShowAproved {
+    color: green;
+}
+
+.Span_Showpending {
+    color: rgb(180, 6, 233);  
+}

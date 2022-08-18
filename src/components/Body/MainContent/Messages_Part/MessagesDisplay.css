@@ -9,6 +9,8 @@ height: 40px;
     background-color: lightblue;
     /* background-color: rgb(196, 192, 192); */
 
+ /* background-color: #FFD700; */
+     
     /* color: white; */
     margin-right: auto;
     width: 45%;
@@ -19,6 +21,11 @@ margin-top: 5px;
 /* border: 1px solid salmon; */
 box-shadow: 0px 0px 10px 1px rgb(121, 119, 119);
 
+
+}
+
+.adminmessage {
+ background-color: #FFD700 !important;
 
 }
 
@@ -47,7 +54,7 @@ margin-top: 5px;
 }
 
 .Messagesdisplay_infobottom {
-    width: 150px;
+    width: 180px;
     margin-left: auto;
     /* border: 1px solid salmon; */
     font-size: small;
@@ -75,5 +82,52 @@ margin-top: 5px;
 
 .Messagesdisplay_messagepart_moreinfo_dis {
     position: absolute;
-    top: 0px;
+    top: 45px;
+    right: 20px;
+    /* background-color: red; */
+    width: 200px;
+    /* height: 25px; */
+    color: white;
+    display: flex;
+    background-color: white;
+    border: 1px solid lightgray;
+    color: green;
+    justify-content:  space-around;
+    border-radius: 5px;
+
+}
+
+.MessagesDisplay {
+    /* border: 2px solid red; */
+    margin-top: 10px;
+}
+
+
+
+/* .Messagesdisplay_messagepart_moreinfo_dis div:n */
+
+.message_deleteicon {
+    color: red;
+}
+
+.message_loveicon {
+    color: #E48CA3;
+}
+
+.message_fireicon {
+
+color:#e25822}
+
+.message_thumbsupicon {
+    color: rgb(24, 231, 228);
+
+}
+
+.message_thumbsdownicon {
+    color: rgb(212, 9, 175)
+
+}
+
+.message_upgradeicon {
+    color: blue;
 }

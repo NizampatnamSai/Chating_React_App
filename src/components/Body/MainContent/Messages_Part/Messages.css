@@ -17,7 +17,7 @@
     align-items: center;
     justify-content: space-around;
    
-    height: 40px;
+    height: 60px;
 }
 
 /* 
@@ -57,3 +57,14 @@
     background: linear-gradient(135deg, rgb(0, 120, 212), rgb(0, 120, 212));
 
     }
+
+   .micpart_oned {
+    color: green;
+    cursor: pointer;
+   }
+
+   .micpart_offed {
+    color: red;
+    cursor: pointer;
+
+   }
