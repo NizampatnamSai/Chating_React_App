@@ -47,13 +47,25 @@ let functiondatecheck=()=>{
     let date = today.getFullYear()+' '+(today.getMonth()+1)+' '+today.getDate();
     let time = today.getHours() + ' ' + today.getMinutes() + ' ' + today.getSeconds();
       let dateTime = date+' '+time;
-      let timechecktime=dateTime;
-    let timedis=timechecktime.split(' ')
+      let timechecktimenow=dateTime;
+    let timedis=timechecktimenow.split(' ')
   
       return timedis
   }
 
 let functiontimecheck=()=>{
+    let nowtime=functiondatecheck()
+    let messagetime=timechecktime?.split(' ')
+    console.log(nowtime,messagetime)
+
+    if(nowtime[3]>messagetime[3]){
+        console.log('true')
+    }
+
+    else {
+        console.log('false')
+    }
+
     // Pass edit or delete
     
     // console.log(functiondatecheck())
@@ -247,7 +259,7 @@ db.collection('group').doc(groupid).collection('messages').doc(messid).update({
                 <EditIcon onClick={handleditmessage}/>
                     </div>} 
 
-                    
+                    {/* Liked by update the db & store in array if name include? color to red if not actual color & includes alredy liked */}
                     <div className='message_loveicon'>
                 <FavoriteIcon/>
                     </div>
