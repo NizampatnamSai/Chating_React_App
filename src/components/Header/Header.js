@@ -70,7 +70,7 @@ let handleLogout=()=>{
 
   return (
     <div className='Header'
-    style={{position:'sticky',top:'0px',
+    style={{position:'sticky',top:'0px',borderBottom:'1px solid lightgrey'
     // color:'white'
     // , backgroundColor:'rgb(10,20,40)'
     }}>

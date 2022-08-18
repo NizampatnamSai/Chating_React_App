@@ -161,7 +161,7 @@ let handleeracegroupinfo=()=>{
           </span>
            
           :
-          <span className='Span_Shownotamember'><GroupAddIcon/> Not a member</span>
+          <span className='Span_Shownotamember'>Join ! <GroupAddIcon/> Not a member</span>
 
           
           
@@ -268,11 +268,13 @@ let handleeracegroupinfo=()=>{
 
 
 
+
+
     
-    : selectadmininfo.active &&
+    : selectadmininfo.active ?
 
     // 'dashboard'
-    <Dashboard/>
+    <Dashboard/>:'Welocme message'
 
 
 

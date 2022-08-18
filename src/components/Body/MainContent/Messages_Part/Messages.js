@@ -109,6 +109,7 @@ let handlemicoffbtn = () => {
 // console.log(input.combine)
 
 
+  // Date part
 
 
 let functiondate=()=>{
@@ -132,12 +133,20 @@ let functiondate=()=>{
 
 }
 
+let functiondatecheck=()=>{
+  let today = new Date();
+  let date = today.getFullYear()+' '+(today.getMonth()+1)+' '+today.getDate();
+  let time = today.getHours() + ' ' + today.getMinutes() + ' ' + today.getSeconds();
+    let dateTime = date+' '+time;
 
-  // Date part
+    return dateTime
+}
  
 
   let handlesubmitmessage=()=>{
     let reqdate=functiondate()
+    let timechecktime=functiondatecheck()
+    // timestamp:firebase.firestore.FieldValue.serverTimestamp(),
 
     db.collection('group').doc(groupid).collection('messages').add({
       time:reqdate,
@@ -147,7 +156,8 @@ let functiondate=()=>{
       dislikes:0,
       sentby:(selectuserinfo.name),
       senderid:(selectuserinfo.userid),
-      sendermail:(selectuserinfo.email)
+      sendermail:(selectuserinfo.email),
+      timechecktime:timechecktime,
 
     })
 
@@ -247,8 +257,8 @@ let functiondate=()=>{
             message={item.data.message} senderid={item.data.senderid}
             sendermail={item.data.sendermail} sentby={item.data.sentby}
             time={item.data.time} dislikes={item.data.dislikes}
-            likes={item.data.likes} loves={item.data.loves}
-            
+            likes={item.data.likes} loves={item.data.loves} timechecktime={item.data.timechecktime}
+            groupid={groupid} updated={item.data.updated}
             />
             
             </div>
