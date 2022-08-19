@@ -7,6 +7,10 @@
 
 
 
+/* .Messages {
+    position: relative;
+} */
+
 .Message_footer {
     width: 70%;
     background-color: rgb(194, 194, 233);
@@ -68,3 +72,70 @@
     cursor: pointer;
 
    }
+
+   .Message_footer_usemicbtn {
+    background-color: green;
+    color: white;
+    border: 2px solid white;
+   }
+
+   .Message_footer_usemicbtn:hover {
+   
+    background-color: #c60000;
+    border: 2px solid  blue;
+
+}
+
+.micspeechclear_btn {
+    background-color: #c60000;
+    color: white;
+    border: 2px solid white;
+}
+
+.micspeechclear_btn:hover {
+
+    background-color: green;
+    
+
+
+}
+
+.micpart_oned_listening {
+    background-color: white;
+    animation: miclistenig 2s  ease-in-out infinite;
+    border-radius: 50%;
+}
+
+@keyframes miclistenig {
+ 0% {
+    background-color: white;
+    border-radius: 50%;
+
+    
+ }
+ 25% {
+    background-color: red;
+    border-radius: 40%;
+
+ }
+ 50% {
+    background-color: blue;
+    border-radius: 30%;
+
+ }
+ 75% {
+    background-color: blueviolet;
+    border-radius: 20%;
+
+ }
+ 100% {
+    background-color: rgb(5, 217, 129);
+    border-radius: 10%;
+
+ }
+
+}
+
+/* .Messages_messages{
+    position: relative;
+}  */

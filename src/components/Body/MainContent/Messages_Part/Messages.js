@@ -33,7 +33,19 @@ const Messages = ({groupid}) => {
 },[groupid,loading])
 
 
+let [usemic,setUsemic]=useState(false)
 
+let handleusemic=()=>{
+  setUsemic(!usemic)
+
+  if(usemic){
+  SpeechRecognition.stopListening()
+  resetTranscript()
+  setMicon(false)
+
+    
+  }
+}
 
   let [input,setInput]=useState({
     text:'',
@@ -46,7 +58,7 @@ const Messages = ({groupid}) => {
     setInput({
       ...input,
       text:e.target.value,
-      combine:(`${input.text}${micinp}`)
+      // combine:(`${input.text}${micinp}`)
     })
   }
 
@@ -77,6 +89,8 @@ let {
   listening,
 } = useSpeechRecognition();
 
+// console.log(listening)
+
 let [language, setLanguage] = useState(
   {
     code: 'te',
@@ -94,18 +108,22 @@ let handlemicoffbtn = () => {
     language: language.code,
   })
 
-  let micinp=input.text
-  setInput({
-    ...input,
-    mic:transcript,
-    combine:(`${input.mic}${micinp}`)
-  })
+  // let micinp=input.text
+  
 
-  //  console.log(transcript)
+   console.log(transcript)
 
 
 }
 
+
+useEffect(()=>{
+  setInput({
+    ...input,
+    mic:transcript,
+  
+  })
+},[transcript])
 // console.log(input.combine)
 
 
@@ -148,9 +166,17 @@ let functiondatecheck=()=>{
     let timechecktime=functiondatecheck()
     // timestamp:firebase.firestore.FieldValue.serverTimestamp(),
 
+let reqmessage;
+    if(usemic){
+      reqmessage=input.mic
+    }
+    else {
+      reqmessage=input.text
+    }
+
     db.collection('group').doc(groupid).collection('messages').add({
       time:reqdate,
-      message:(input.text),
+      message:reqmessage,
       loves:0,
       likes:0,
       dislikes:0,
@@ -195,8 +221,11 @@ let functiondatecheck=()=>{
   )
   setInput({
     ...input,
-    text:''
+    text:'',
+    mic:''
   })
+
+  resetTranscript()
 
 }
 
@@ -274,31 +303,89 @@ let functiondatecheck=()=>{
 
       <div className='Message_footer'>
         {/* Have to use react mic */}
-        <input  placeholder='type a message' value={input.text} onChange={handleInputchange}/>
+        
+        {usemic ? 
+        
+        <button className='Message_footer_usemicbtn'
+        onClick={handleusemic}
+        >useText</button>
+        :
+        
+        
+        <button onClick={handleusemic} 
+        className='Message_footer_usemicbtn'
+         >usemic</button>}
+
+
+
+
+       {usemic ?
+       <input placeholder='use Mic to speck in telugu'  value={input.mic}/>:
+
+       <input  placeholder='type a message' value={input.text} onChange={handleInputchange}/>
+      
+      }
+
+
           
         
 
         <div className={micon? 'micpart_oned':'micpart_offed'}>
-         {micon ? 
-         <MicOutlinedIcon onClick={handlemiconbtn}/>: 
+           {usemic && (micon ? 
+
+         <MicOutlinedIcon onClick={handlemiconbtn}     
+         className={listening && 'micpart_oned_listening'}   />: 
          
          
-         <MicOffIcon onClick={handlemicoffbtn}/>}
+         <MicOffIcon onClick={handlemicoffbtn}   
+        //  className={!listening && 'micpart_oned_listening'}
+         />)}
 </div>
+          
 
-
-         {input.text && 
-        //use mic here 
-          <Avatar  className='Message_send_Avatar' onClick={handlesubmitmessage}> 
+          {usemic ?
+          (input.mic && 
+            
+            <Avatar  className='Message_send_Avatar' onClick={handlesubmitmessage}> 
         
         
 
-        <SendIcon />
+            <SendIcon />
+    
+             
+            </Avatar>) :
+        (input.text && 
+          //use mic here 
+            <Avatar  className='Message_send_Avatar' onClick={handlesubmitmessage}> 
+          
+          
+  
+          <SendIcon />
+  
+           
+          </Avatar>
+           
+        )
+        
+        }
 
+
+{usemic &&
+          input.mic && <button
+          className='micspeechclear_btn'
+          onClick={()=>{
+
+            setInput({
+              ...input,
+              mic:''
+            })
+            resetTranscript()
+          }}
+          
+          
+          >
+            clear</button>}
          
-        </Avatar>
-         
-          }
       </div>
 
       

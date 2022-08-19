@@ -168,7 +168,7 @@ db.collection('group').doc(groupid).collection('messages').doc(messid).update({
         open:false
     })
 
- toast.info(`message updated`, {
+ toast.success(`message updated`, {
     position: "top-right",
     autoClose: 5000,
     hideProgressBar: false,

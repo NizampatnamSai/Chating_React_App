@@ -90,6 +90,7 @@ let [user,setUser]=useState([])
 let requerid;
 let reqemail;
 let reqname;
+let reqimg;
 // if(Array.isArray(user)){
   if(user){
 
@@ -100,13 +101,15 @@ let reqname;
      { requerid=userinformation.id;
       reqemail=userinformation.data.email;
       reqname=userinformation.data.name
+      reqimg=userinformation.data?.img
       
       
       dispatch(
                 userInfo({
                       userid:requerid,
                   email:reqemail,
-                  name:reqname
+                  name:reqname,
+                  imgsrc:reqimg
                 })
               )
 

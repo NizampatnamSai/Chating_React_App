@@ -14,6 +14,7 @@ import BlockIcon from '@mui/icons-material/Block';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import DoneIcon from '@mui/icons-material/Done';
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
+import Welcomepage from './Welcomepage'
 
 
 const Maincontent = () => {
@@ -146,7 +147,7 @@ let handleeracegroupinfo=()=>{
 
           
 
-          <button onClick={handleeracegroupinfo}>back</button>
+          <button onClick={handleeracegroupinfo} className='Maincontent_backbuttonforAdmin'>back</button>
           
           
           : grpmembercheck ?blockmen.includes(selectusersinfo?.name)? 
@@ -274,7 +275,9 @@ let handleeracegroupinfo=()=>{
     : selectadmininfo.active ?
 
     // 'dashboard'
-    <Dashboard/>:'Welocme message'
+    <Dashboard/>:
+
+    <Welcomepage/>
 
 
 

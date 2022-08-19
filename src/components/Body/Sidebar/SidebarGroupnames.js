@@ -1,3 +1,4 @@
+import { Avatar } from '@mui/material'
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { groupInfoact } from '../../Redux/ReduxSlice'
@@ -22,7 +23,10 @@ const SidebarGroupnames = ({id,name,index,admin,active}) => {
     <div className='Sidebar_Groupnames'
      >
         <div className='Sidebar_Groupnames_inside'>
-            <small>{index+1}</small>
+            <span>
+            <Avatar className='SidebarGroupnames_Avatar'>{`${name[0].toUpperCase()}${name[1].toUpperCase()}`}</Avatar>
+            
+            </span>
             <span  onClick={handlegroupinfo}
             >{name}</span>
 

@@ -65,7 +65,7 @@
     display: flex;
     color: black;
     margin-top: 10px;
-    justify-content: space-around;
+    /* justify-content: space-around; */
     align-items: center;
     padding: 5px;
 }
@@ -82,4 +82,14 @@
 
 .Sidebar_createGroup {
     cursor: pointer;
+}
+
+.Sidebar_Groupnames_inside > span:nth-last-child(1){
+    /* background-color: red; */
+    margin-left: 10px;
+
+}
+
+.SidebarGroupnames_Avatar {
+    background-color: #102040 !important;
 }
