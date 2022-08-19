@@ -100,16 +100,17 @@
 
 }
 
-.micpart_oned_listening {
+/* .micpart_oned_listening {
     background-color: white;
     animation: miclistenig 2s  ease-in-out infinite;
     border-radius: 50%;
-}
+} */
 
 @keyframes miclistenig {
  0% {
     background-color: white;
     border-radius: 50%;
+    
 
     
  }
@@ -136,6 +137,31 @@
 
 }
 
-/* .Messages_messages{
+.Messages_messages{
     position: relative;
-}  */
+} 
+
+.Messages_ShowMicListening {
+    background-color: white;
+    position: fixed;
+    bottom: 0px;
+    height: 83vh;
+    width: 75%;
+    /* z-index: 1; */
+    display: grid;
+    align-items: center;
+    /* justify-content: center; */
+    /* margin-left: auto; */
+}
+
+.Messages_ShowMicListening_Inside {
+    display: flex;
+    /* border: 1px solid red; */
+    justify-content: space-around;
+}
+
+.Messages_ShowMicListening_Inside  div{
+    /* border: 1px solid blue; */
+    width: 50%;
+
+}

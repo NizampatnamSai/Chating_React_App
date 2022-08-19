@@ -111,7 +111,7 @@ let handlemicoffbtn = () => {
   // let micinp=input.text
   
 
-   console.log(transcript)
+  //  console.log(transcript)
 
 
 }
@@ -226,6 +226,9 @@ let reqmessage;
   })
 
   resetTranscript()
+  setMicon(false)
+  SpeechRecognition.stopListening()
+
 
 }
 
@@ -234,7 +237,8 @@ let reqmessage;
   let [messages,setMessages]=useState([])
 
   useEffect(()=>{
-    db.collection('group').doc(groupid).collection('messages').orderBy('time','asc').onSnapshot((snap)=>{
+    // db.collection('group').doc(groupid).collection('messages').orderBy('time','asc').onSnapshot((snap)=>{
+      db.collection('group').doc(groupid).collection('messages').orderBy('timechecktime','asc').onSnapshot((snap)=>{
 
     // db.collection('group').doc(groupid).collection('messages').onSnapshot((snap)=>{
       setMessages(snap.docs.map((item)=>({
@@ -242,7 +246,23 @@ let reqmessage;
         data:item.data()
       })))
     })
-      
+    
+    setInput({
+      ...input,
+      text:'',
+      mic:''
+    })
+
+    resetTranscript()
+    
+    setMicon(false)
+  SpeechRecognition.stopListening()
+    
+
+
+
+
+
   },[groupid])
 
 
@@ -276,6 +296,7 @@ let reqmessage;
   return (
     <div className='Messages'>
       <div className='Messages_Inside'>
+        
         <div className='Messages_messages' ref={Chatref}>
       {/* Messages display */}
 
@@ -293,6 +314,28 @@ let reqmessage;
             </div>
         )
       })}
+{ micon &&
+      <div className='Messages_ShowMicListening'>
+        <div className='Messages_ShowMicListening_Inside'>
+
+        <div>
+          Speak now,
+        Mic is listening ....
+        <br/>
+
+
+
+       <h3 style={{marginTop:'10px', padding:'5px'}}
+       >{transcript}</h3> 
+        
+        </div>
+        <div>
+
+          {/* mic img large & small */}
+          <img src='https://mir-s3-cdn-cf.behance.net/project_modules/max_632/0f4eed26719057.5635a060dc9e1.gif'/>
+        </div>
+        </div>
+      </div>}
 
           
         </div>

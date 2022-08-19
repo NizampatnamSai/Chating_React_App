@@ -21,7 +21,7 @@ const MessagesDisplay = ({
     groupid, messid,message,senderid,sendermail,sentby,time,dislikes,
     likes,loves, timechecktime,updated}) => {
 
-        let updatedmessage='';
+let updatedmessage='';
 if(updated){
     updatedmessage='updated'
 }
@@ -48,17 +48,20 @@ let functiondatecheck=()=>{
     let time = today.getHours() + ' ' + today.getMinutes() + ' ' + today.getSeconds();
       let dateTime = date+' '+time;
       let timechecktimenow=dateTime;
-    let timedis=timechecktimenow.split(' ')
   
-      return timedis
+      return timechecktimenow
   }
 
 let functiontimecheck=()=>{
-    let nowtime=functiondatecheck()
+    // let nowtime=
+    let nowtime=functiondatecheck().split(' ')
+
     let messagetime=timechecktime?.split(' ')
     console.log(nowtime,messagetime)
 
-    if(nowtime[3]>messagetime[3]){
+    // convert hrs,min,sec to sum of seconds the compare like that
+
+    if(Array.isArray(nowtime) && nowtime[3]>messagetime[3]){
         console.log('true')
     }
 
@@ -86,6 +89,26 @@ let handlemoreinfo=()=>{
         ...editinfo,
         open:false
     })
+
+// let  timestamp=functiondatecheck();
+
+    // db.collection('group').doc(groupid).collection('messages').doc(messid).update({
+    
+    //     timechecktime:timestamp
+    
+    
+    
+    
+    // })
+
+
+
+
+
+
+
+
+
 }
 
 // console.log(editinfo.text)

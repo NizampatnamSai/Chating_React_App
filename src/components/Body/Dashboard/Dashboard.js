@@ -11,6 +11,8 @@ const Dashboard = () => {
 
 let selectadmininfo=useSelector(Selectadmininfo)
 let groupid=selectadmininfo?.groupid
+let groupname=selectadmininfo?.name
+
   let [groups,SetGroups]=useState([])
 
 useEffect(()=>{
@@ -62,6 +64,7 @@ let [groupmembers,setGroupmembers]=useState([])
 
                 {/* {selectadmininfo?.groupid} */}
                 Members and there data
+                in {groupname} group
 
 
                 { groupmembers.map((item)=>{

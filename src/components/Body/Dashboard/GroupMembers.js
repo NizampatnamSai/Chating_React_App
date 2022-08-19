@@ -3,10 +3,13 @@ import EditIcon from '@mui/icons-material/Edit';
 import './GroupDashboard.css'
 import UpgradeIcon from '@mui/icons-material/Upgrade';
 import { db } from '../../../Firebase';
+import { useSelector } from 'react-redux';
+import { Selectadmininfo } from '../../Redux/ReduxSlice';
 
 const GroupMembers = ({id,active,block,userid,email,name,groupid}) => {
 
-
+   let selectadmininfo=useSelector(Selectadmininfo)
+   // let groupname=selectadmininfo?.name
     // console.log(id,block,active,email,name,userid)
 
 let [editoption,setEditoption]=useState(false)
@@ -88,6 +91,7 @@ let handleEditUpdate=()=>{
 // console.log(meminfo)
     return (
     <div className='GroupMembers'>
+     
         <div className='GroupMembers_Inside'>
      <table className='GroupMembers_table'>
         <tbody>

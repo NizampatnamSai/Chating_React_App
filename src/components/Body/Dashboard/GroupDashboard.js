@@ -15,7 +15,8 @@ const GroupDashboard = ({id,active,admin,name}) => {
   let handlegroupselect=()=>{
     dispatch( adminInfo({
         active:true,
-        groupid:id
+        groupid:id,
+        name:name
 
       }
         
