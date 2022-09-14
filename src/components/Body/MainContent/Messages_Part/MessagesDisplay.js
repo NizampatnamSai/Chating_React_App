@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Selectadmininfo, Selectgroupinfo, Selectuserinfo } from '../../../Redux/ReduxSlice'
 import './MessagesDisplay.css'
@@ -25,11 +25,14 @@ let updatedmessage='';
 if(updated){
     updatedmessage='updated'
 }
+// let selectgroupinfo=useSelector(Selectgroupinfo)
 
   let [moreinfo,setMoreinfo]=useState(false)
       
         let selectuserinfo=useSelector(Selectuserinfo)
+        // console.log(selectuserinfo?.userid)
         let selectgroupinfo=useSelector(Selectgroupinfo)
+        let groupname=selectgroupinfo?.name
         let admin=false;
         if (sendermail=== selectgroupinfo?.admin){
             admin=true;
@@ -218,7 +221,85 @@ db.collection('group').doc(groupid).collection('messages').doc(messid).update({
 })
 }
 
+let [likesData,setLikesData]=useState([])
 
+let getLikesData=()=>{
+    db.collection('users').doc(selectuserinfo?.userid).
+        collection('likes').onSnapshot((data)=>(
+            setLikesData((data.docs.map((item)=>({
+                id:item.id,
+                data:item.data()
+            }))))
+        ))
+}
+
+useEffect(()=>{
+
+    getLikesData()
+},[message])
+
+
+let likesmesid=[];
+
+let likesid=[]
+
+likesData.map((item,indx)=>{
+    likesmesid.push(item.data.messid)
+    likesid.push(item.id)
+
+})
+
+let handleClickIcons=(name)=>{
+    if(name==='like'){
+
+//    if(likesData.map((item,indx)=>{
+//     if(item.data.messid===messid)
+     
+   
+// }
+//    ))
+
+
+
+if(likesmesid.includes(messid)){
+    // console.log(likesid[(likesmesid.indexOf(messid))])
+    alert('deleted from the like')
+    db.collection('users').doc(selectuserinfo?.userid).
+    collection('likes').doc(likesid[(likesmesid.indexOf(messid))]).delete()
+    
+    db.collection('group').doc(groupid).collection('messages').doc(messid).update({
+        likes:(likes-1)
+    })
+
+}
+
+else{
+
+        alert('added to the like')
+
+        db.collection('users').doc(selectuserinfo?.userid).
+        collection('likes').add({
+            groupid, messid,message,senderid,sendermail,sentby,groupname
+        })
+        
+        db.collection('group').doc(groupid).collection('messages').doc(messid).update({
+            likes:(likes+1)
+        })
+
+    }}
+
+    if(name==='dislike'){
+        alert('added to the dislike')
+    }
+
+    if(name==='fire'){
+        alert('added to the fire')
+    }
+
+    if(name==='favorite'){
+        alert('added to the favaroute')
+    }
+}
   return (
     <div className='MessagesDisplay'>
           
@@ -284,16 +365,32 @@ db.collection('group').doc(groupid).collection('messages').doc(messid).update({
 
                     {/* Liked by update the db & store in array if name include? color to red if not actual color & includes alredy liked */}
                     <div className='message_loveicon'>
-                <FavoriteIcon/>
+                <FavoriteIcon
+                onClick={()=>{
+                    handleClickIcons('favorite')
+                }}
+                />
                     </div>
                     <div className='message_fireicon'>
-                    <LocalFireDepartmentIcon/>
+                    <LocalFireDepartmentIcon
+                    onClick={()=>{
+                        handleClickIcons('fire')
+                    }}
+                    />
                         </div>
                     <div className='message_thumbsupicon'>
-                <ThumbUpIcon/>
+                <ThumbUpIcon
+                onClick={()=>{
+                    handleClickIcons('like')
+                }}
+                />
                     </div>
                     <div className='message_thumbsdownicon'>
-                <ThumbDownAltIcon/>
+                <ThumbDownAltIcon
+                onClick={()=>{
+                    handleClickIcons('dislike')
+                }}
+                />
                     </div>
 
                     {(ownmessage || (selectuserinfo.email==='chatireactappadmin@gmail.com'))  && <div className='message_deleteicon'>
