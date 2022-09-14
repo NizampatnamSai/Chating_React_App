@@ -412,6 +412,32 @@ else{
                 {time}
 
             </div>
+
+            <div 
+            className='Messagesdisplay_emogies'
+            >
+                {likes>0 &&
+               <div>
+                <span>
+                <ThumbUpIcon
+                style={
+                    {
+                        // color:'#E8BEAC'
+                        color:'#c68642'
+                        
+                    }
+                }
+/>
+                </span>
+
+                <span>
+               
+                {likes}
+                
+                    </span>
+                
+                </div>}
+            </div>
         </div>
       
     </div>
