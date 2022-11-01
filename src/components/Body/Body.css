@@ -33,3 +33,16 @@
         flex: 0.75;
     }
 }
+
+/* Need to do for 800 */
+/* @media (min-width:800px){
+    .Body_sidebar {
+        width: 25%;
+
+      
+    }
+    
+    .Body_Maincontent {
+        flex: 0.75;
+    }
+} */
