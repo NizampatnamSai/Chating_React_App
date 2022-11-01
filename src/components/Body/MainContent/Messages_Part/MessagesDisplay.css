@@ -143,3 +143,21 @@ color:#e25822}
 .Messagesdisplay_messagepart_message input {
     max-width: 150px;
 }
+
+.Messagesdisplay_emogies {
+    position: absolute;
+    bottom: -10px;
+}
+
+.Messagesdisplay_emogies div {
+    background-color: rgba(121, 119, 119,0.5);
+    border-radius: 50%;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2px;
+    box-sizing: border-box;
+
+
+}
