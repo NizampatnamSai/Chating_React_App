@@ -92,3 +92,18 @@
     color: black;
 
 }
+
+@media (max-width:800px){
+    .MainConetn_WelcomePage{
+        display:none;
+    }
+}
+
+
+@media (max-width:500px){
+    .Maincontent_header{
+        height: 90px;
+        /* padding-bottom: 25px; */
+
+    }
+}

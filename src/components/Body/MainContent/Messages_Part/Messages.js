@@ -93,9 +93,36 @@ let {
 
 let [language, setLanguage] = useState(
   {
-    code: 'te',
-    name: 'telugu'
+    code: 'en',
+    name: 'english'
   })
+
+  let handlelanguagechange = (e) => {
+    console.log(e.target.value)
+    let targeted = (e.target.value)
+    console.log(targeted.split(' '))
+    let targetteddata = targeted.split(' ');
+    console.log(targetteddata);
+    setLanguage({
+      ...language,
+      code: targetteddata[1],
+      name: targetteddata[0]
+    })
+    console.log('during changing code',language.code)
+
+    micLanguageCheck()
+
+
+  }
+
+
+  let micLanguageCheck=()=>{
+    console.log('after changed code',language.code)
+    SpeechRecognition.startListening({
+      continuous: true,
+      language: language.code,
+    })
+  }
 
 let handlemicoffbtn = () => {
   alert('Mic is on, please speck to record')
@@ -103,16 +130,13 @@ let handlemicoffbtn = () => {
 
 
   // let language='en'
-  SpeechRecognition.startListening({
-    continuous: true,
-    language: language.code,
-  })
+
 
   // let micinp=input.text
   
 
   //  console.log(transcript)
-
+  micLanguageCheck()
 
 }
 
@@ -316,11 +340,27 @@ let reqmessage;
       })}
 { micon &&
       <div className='Messages_ShowMicListening'>
+        <div>
+          Language change
+          <div>
+
+<select onChange={handlelanguagechange}>
+  <option>English en</option>
+  <option>Telugu te</option>
+
+  <option>Hindi hi</option>
+  <option>Tamil ta</option>
+  <option>Kannada kn</option>
+</select>
+</div>
+
+
+          </div>
         <div className='Messages_ShowMicListening_Inside'>
 
         <div>
           Speak now,
-        Mic is listening ....
+        Mic is listening in {language.code}....
         <br/>
 
 

@@ -93,3 +93,17 @@
 .SidebarGroupnames_Avatar {
     background-color: #102040 !important;
 }
+
+@media (max-width:800px){
+    .Sidebar_inside {
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    }
+}
+
+@media (max-width:550px){
+    .Sidebar_inside {
+    width: 90%;
+    }
+}

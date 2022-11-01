@@ -161,3 +161,17 @@ color:#e25822}
 
 
 }
+
+@media (max-width:600px) {
+
+.MessagesDisplay_message {
+    width: 75%;
+
+}
+.MessagesDisplay_message_own {
+    width: 75%;
+
+
+
+}
+}

@@ -276,8 +276,11 @@ let handleeracegroupinfo=()=>{
 
     // 'dashboard'
     <Dashboard/>:
+    <div className={'MainConetn_WelcomePage'}>
+
 
     <Welcomepage/>
+   </div>
 
 
 

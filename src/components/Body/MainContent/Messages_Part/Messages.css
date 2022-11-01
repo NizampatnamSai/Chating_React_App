@@ -165,3 +165,21 @@
     width: 50%;
 
 }
+
+@media (max-width:800px){
+    .Message_footer {
+        width: 100%;
+    
+    
+    }
+
+    .Messages_ShowMicListening {
+      
+        width: 100%;
+       
+    }
+    .Message_footer > input {
+        width: 65%;
+    }
+    
+    }

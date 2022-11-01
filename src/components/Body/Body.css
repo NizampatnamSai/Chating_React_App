@@ -46,3 +46,25 @@
         flex: 0.75;
     }
 } */
+
+
+
+
+@media (max-width:800px){
+.Body_sidebar_NoName {
+    width: 100% !important;
+}
+.Body_Maincontent_NoName {
+    width: 0% !important;
+}
+.Body_sidebar_Name{
+    width: 0% !important;
+    display: none;
+}
+.Body_Maincontent_Name{
+    width: 100% !important;
+    /* display: none; */
+    flex: 1;
+    /* background-color: 'red' !important; */
+}
+}
