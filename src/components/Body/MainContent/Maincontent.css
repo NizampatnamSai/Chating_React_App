@@ -103,7 +103,13 @@
 @media (max-width:500px){
     .Maincontent_header{
         height: 90px;
+        padding: 5px;
+        /* width: 100% !important ; */
         /* padding-bottom: 25px; */
-
+/* background-color: #301934 !important; */
     }
 }
+/* .Maincontent_header {
+background-color: #301934 !important;
+
+} */

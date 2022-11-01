@@ -94,7 +94,10 @@ let handleEditUpdate=()=>{
      
         <div className='GroupMembers_Inside'>
      <table className='GroupMembers_table'>
-        <tbody>
+        <tbody 
+      
+        className='GroupMembers_tablet1'
+        >
             
         {name}
 
@@ -102,18 +105,44 @@ let handleEditUpdate=()=>{
             
         </tbody>
 
-        <tbody><button
+        <tbody 
+       
+        className='GroupMembers_tablet2'
+        
+        >
+         <button
         onClick={handleactive}
+       style={{
+         backgroundColor:meminfo.memactive? 'green':'red',
+         color:'white',
+         border:'2px solid white',
+         borderRadius:'2px'
+       }}
         >{meminfo.memactive ? 'active':'pending'}</button></tbody>
-        <tbody>
+        
+        
+          <tbody
+       
+        className='GroupMembers_tablet3'
+        
+        >
          <button
          onClick={handleblock}
+         style={{
+            backgroundColor:!meminfo.memblock? 'green':'red',
+            color:'white',
+            border:'2px solid white',
+            borderRadius:'2px'
+          }}
          
          >{meminfo.memblock? 'blocked':'Notblocked'}</button>
          
          
          </tbody>
-        <tbody>
+        <tbody
+        className='GroupMembers_tablet4'
+        
+        >
          {editoption ? <UpgradeIcon onClick={handleEditUpdate}/>:
          <EditIcon onClick={handleedit}/>}
         </tbody>

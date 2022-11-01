@@ -16,5 +16,37 @@
 
 .Dashboard_grpmemberspart {
     width: 75%;
+    margin-top: 20px;
 }
 
+.Dashboard_grpmemberspart_backbtn{
+    background-color: aqua;
+    margin-left: 10px;
+}
+
+@media (max-width:600px){
+    .Dashboard_Inside {
+        display: flex;
+        flex-direction: column;
+    }
+    .Dashboard_groupspart {
+      
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .Dashboard_grpmemberspart {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+       
+    }
+    .Dashboard_groupspart_namesInside {
+        display: flex;
+        /* flex-direction: column; */
+        justify-content: space-around;
+        margin-top: 5px;
+        margin-bottom: 5px;
+
+    }
+}

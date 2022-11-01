@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { db } from '../../../Firebase'
-import { Selectadmininfo } from '../../Redux/ReduxSlice'
+import { adminInfo, Selectadmininfo } from '../../Redux/ReduxSlice'
 // import '/Dashboard.css'
 import './Dashboard.css'
 import GroupDashboard from './GroupDashboard'
@@ -12,6 +12,8 @@ const Dashboard = () => {
 let selectadmininfo=useSelector(Selectadmininfo)
 let groupid=selectadmininfo?.groupid
 let groupname=selectadmininfo?.name
+let dispatch=useDispatch()
+
 
   let [groups,SetGroups]=useState([])
 
@@ -40,12 +42,24 @@ let [groupmembers,setGroupmembers]=useState([])
 
 //  console.log(groupmembers)
 
+let handleBackbtn=()=>{
+  dispatch( adminInfo({
+    active:false
+
+  }
+    
+  ))
+}
+
   return (
     <div className='Dashboard'>
         <div className='Dashboard_Inside'>
 
             <div className='Dashboard_groupspart' >
                 Grop here to select
+                <div className='Dashboard_groupspart_namesInside'>
+
+               
                 { groups.map((item)=>{
                     return(
                         <div key={Math.random()}>
@@ -59,14 +73,22 @@ let [groupmembers,setGroupmembers]=useState([])
                             </div>
                     )
                 })}
+                 </div>
             </div>
             <div className='Dashboard_grpmemberspart'>
 
                 {/* {selectadmininfo?.groupid} */}
                 Members and there data
-                in {groupname} group
+                in {groupname} group 
+                <button onClick={handleBackbtn} className='Dashboard_grpmemberspart_backbtn'>
+                  Back
+                </button>
 
-
+                <div
+                style={{
+                  marginTop:'10px'
+                }}
+                >
                 { groupmembers.map((item)=>{
                     return(
                         <div key={item.id}>
@@ -82,6 +104,7 @@ let [groupmembers,setGroupmembers]=useState([])
                 })
 
                 }
+                </div>
             </div>
         </div>
     </div>

@@ -3,10 +3,13 @@ import Maincontent from './MainContent/Maincontent'
 import Sidebar from './Sidebar/Sidebar'
 import './Body.css'
 import { useSelector } from 'react-redux'
-import { Selectgroupinfo } from '../Redux/ReduxSlice'
+import { Selectadmininfo, Selectgroupinfo } from '../Redux/ReduxSlice'
 
 const Body = () => {
   let selectgroupinfo=useSelector(Selectgroupinfo)
+  let selectadmininfo=useSelector(Selectadmininfo)
+  // console.log(selectadmininfo.active)
+// no name  & active -> maincontent 100% & sidebar 0%
 
   return (
     <div className='Body'
@@ -16,12 +19,17 @@ const Body = () => {
 
 <div className='Body_inside'>
 
-    <div className={`Body_sidebar ${!selectgroupinfo?.name ? 'Body_sidebar_NoName':'Body_sidebar_Name'}`}>
+    <div className={`Body_sidebar ${!selectgroupinfo?.name   
+    && !selectadmininfo.active 
+      ?
+      'Body_sidebar_NoName':'Body_sidebar_Name'}`}>
     <Sidebar/>
 
     </div>
 
-    <div className={`Body_Maincontent ${!selectgroupinfo?.name ?'Body_Maincontent_NoName':'Body_Maincontent_Name'}`}>
+    <div className={`Body_Maincontent ${!selectgroupinfo?.name  
+      && !selectadmininfo.active 
+      ? 'Body_Maincontent_NoName':'Body_Maincontent_Name'}`}>
         <Maincontent/>
     </div>
 
