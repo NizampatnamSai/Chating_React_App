@@ -62,7 +62,12 @@ let handleBackbtn=()=>{
                
                 { groups.map((item)=>{
                     return(
-                        <div key={Math.random()}>
+                        <div key={Math.random()} className={`Dashboard_groupspart_namesInsideNames `}
+                        style={{
+                          color: groupname ===item.data.name ? 'green':'red',
+                          borderBottom:groupname ===item.data.name ? '1px solid white':'1px solid black'
+                        }}
+                        >
                             <GroupDashboard id={item.id}
                              active={item.data.active} admin={item.data.admin}
                              name={item.data.name}

@@ -24,7 +24,7 @@
     margin-left: 10px;
 }
 
-@media (max-width:600px){
+/* @media (max-width:600px){ */
     .Dashboard_Inside {
         display: flex;
         flex-direction: column;
@@ -49,4 +49,16 @@
         margin-bottom: 5px;
 
     }
+/* } */
+
+.Dashboard_groupspart{
+    margin-top: 10px;
+}
+
+.Dashboard_groupspart_namesInsideNames{
+    /* color: red; */
+    min-width: 20%;
+}
+.Dashboard_groupspart_namesInside{
+    flex-wrap: wrap;
 }
