@@ -1,13 +1,15 @@
 import { Avatar } from '@mui/material'
 import React from 'react'
-import { useDispatch } from 'react-redux'
-import { groupInfoact } from '../../Redux/ReduxSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { groupInfoact, Selectgroupinfo } from '../../Redux/ReduxSlice'
 
 
 const SidebarGroupnames = ({id,name,index,admin,active}) => {
     // console.log(id,name,admin,active)
 
     let dispatch=useDispatch()
+  let selectgroupinfo=useSelector(Selectgroupinfo)
+
 
 
     let handlegroupinfo=()=>{
@@ -28,6 +30,9 @@ const SidebarGroupnames = ({id,name,index,admin,active}) => {
             
             </span>
             <span  onClick={handlegroupinfo}
+            style={{
+              borderBottom:selectgroupinfo?.name ===name? `2px solid white `:`2px solid salmon `
+            }}
             >{name}</span>
 
         </div>
