@@ -46,7 +46,8 @@ const Sidebar = () => {
     SetGroupName(
      {
       ...groupname,
-      display:grpdis
+      display:grpdis,
+      name:''
      }
     )}
 
@@ -97,7 +98,7 @@ const Sidebar = () => {
 
 {users.email==='chatireactappadmin@gmail.com' &&  <p className='Sidebar_createGroup'
        onClick={handleCreateGroup}
-       >+ Create greoup</p> }
+       >+ Create group</p> }
       
 
        {groupname.display && 

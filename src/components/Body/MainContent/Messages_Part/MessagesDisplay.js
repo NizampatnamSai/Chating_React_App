@@ -87,6 +87,7 @@ let [editinfo,setEditinfo]=useState({
 })
 
 let handlemoreinfo=()=>{
+    // alert('cliked')
     setMoreinfo(!moreinfo)
     setEditinfo({
         ...editinfo,
@@ -271,6 +272,9 @@ if(likesmesid.includes(messid)){
         likes:(likes-1)
     })
 
+    setMoreinfo(false)
+
+
 }
 
 else{
@@ -285,6 +289,8 @@ else{
         db.collection('group').doc(groupid).collection('messages').doc(messid).update({
             likes:(likes+1)
         })
+    setMoreinfo(false)
+
 
     }}
 
@@ -422,7 +428,7 @@ else{
                 <ThumbUpIcon
                 style={
                     {
-                        // color:'#E8BEAC'
+                        // color:'#E8BEAC',
                         color:'#c68642'
                         
                     }

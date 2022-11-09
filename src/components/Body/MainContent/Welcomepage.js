@@ -66,7 +66,6 @@ url
 
 
 
-
 let imgsrc;
 // let imgsrc=(selectusersinfo?.imgsrc) ;
 
@@ -76,7 +75,7 @@ let imgsrc;
 
     <div className='Welcomepage'>
         <h1>
-      Welocme, <b>{selectusersinfo?.name}</b>
+      Welcome, <b>{selectusersinfo?.name}</b>
       </h1>
       <div className='Welcomepage_inside'>
         <div>
@@ -168,6 +167,8 @@ let imgsrc;
             </div>
       </div>
     </div>
+
+
   )
 
 

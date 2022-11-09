@@ -171,10 +171,10 @@ let handleLogout=()=>{
            >Logout</button>
                 </li>
 
-                <li className="nav-item dropdown Themes_option">
+                {/* <li className="nav-item dropdown Themes_option">
                 <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Themes
-                </a>
+                </a> */}
                 {/* <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li onClick={handleLighttheme}><a className="dropdown-item my-1"  >Blue</a></li>
                   <li ><hr className="dropdown-divider"  /></li>
@@ -183,7 +183,7 @@ let handleLogout=()=>{
 
 
               </ul> */}
-              </li>
+              {/* </li> */}
               </ul>
               
             </div>

@@ -119,6 +119,13 @@ let handleeracegroupinfo=()=>{
    
       <div className='MainContent'>
       <div className='Maincontent_header'>
+        {
+                users?.email!=='chatireactappadmin@gmail.com' &&
+
+          
+
+                <button onClick={handleeracegroupinfo} className='Maincontent_backbuttonforAdmin'>back</button>
+        }
         <div className='MainContent_Avatar_div'>
           <Avatar  className='Maincontent_Avatar'> 
         

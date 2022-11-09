@@ -13,6 +13,7 @@ import {useCollection, useDocument} from 'react-firebase-hooks/firestore'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 
 
 const Messages = ({groupid}) => {
@@ -29,6 +30,7 @@ const Messages = ({groupid}) => {
       false
       // { block: 'end',  behavior: 'smooth' }
     )
+    console.log(Chatref.current.clientHeight)
 
 },[groupid,loading])
 
@@ -285,6 +287,7 @@ let reqmessage;
 
 
 
+  setTopMoveDis(true)
 
 
   },[groupid])
@@ -308,7 +311,31 @@ let reqmessage;
 
 
 
+  let [topmovedis,setTopMoveDis]=useState(true)
+  let handleMovetopscroll=()=>{
+    console.log(topmovedis)
+    Chatref?.current?.
+    scrollIntoView(
+      topmovedis
+    )
+    setTopMoveDis(!topmovedis)
 
+  // Chatref.current.c
+  }
+  
+  
+  // useEffect(()=>{
+  
+  
+  
+  // window.addEventListener('scroll',()=>{
+  //   if(window.scrollY>=135){
+  //     return setTopMoveDis(true)}
+  
+  //  return setTopMoveDis(false)
+  
+  
+  // })
 
 
 
@@ -377,6 +404,15 @@ let reqmessage;
         </div>
       </div>}
 
+
+
+      <div className='messages_scroll'>
+       <div className='Move_top_icon' onClick={handleMovetopscroll}>
+       <ArrowBackIosNewIcon  className={` ${!topmovedis ? 'Move_bottom_icon_icon':'Move_top_icon_icon'}`} />
+       </div>
+       </div>
+
+ 
           
         </div>
 

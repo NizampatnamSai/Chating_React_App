@@ -183,3 +183,53 @@
     }
     
     }
+
+  
+
+    .messages_scroll {
+        position: fixed;
+        bottom: 85px;
+        right: 15px;
+    }
+
+    .Move_top_icon {
+        /* position: fixed; */
+        /* bottom: 5px;
+        right: 7px; */
+        /* color: red; */
+        background-color: white;
+        width: 50px;
+        height: 50px;
+        border: 2px solid #051b30;
+        background-color: #051b30 ;
+      box-shadow:  0px 0px 2px 2px white;
+        border-radius: 50%;
+        display: flex;
+        cursor: pointer;
+    
+        /* position: absolute;
+        bottom: 0;
+        right: 0; */
+      }
+    
+      .Move_top_icon_icon {
+      align-self: center !important;
+      /* justify-self: center !important; */
+      color: white;
+      margin-right: auto;
+      transform: rotate(90deg);
+      margin-left: 10px;
+    
+      }
+
+      .Move_bottom_icon_icon {
+        align-self: center !important;
+      /* justify-self: center !important; */
+      color: white;
+      margin-right: auto;
+      margin-left: 10px;
+      transform: rotate(270deg);
+
+
+      }
+    

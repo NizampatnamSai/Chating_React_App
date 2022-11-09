@@ -82,9 +82,9 @@ let handleBackbtn=()=>{
             </div>
             <div className='Dashboard_grpmemberspart'>
 
-                {/* {selectadmininfo?.groupid} */}
-                Members and there data
-                in {groupname} group 
+            {!groupname ? 'Select group to see the data of the group' :`
+                Members and there  data
+                in ${groupname} group `}
                 <button onClick={handleBackbtn} className='Dashboard_grpmemberspart_backbtn'>
                   Back
                 </button>
