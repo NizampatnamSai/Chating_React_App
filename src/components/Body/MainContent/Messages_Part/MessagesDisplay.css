@@ -20,6 +20,7 @@ border-radius: 15px;
 margin-top: 5px;
 /* border: 1px solid salmon; */
 box-shadow: 0px 0px 10px 1px rgb(121, 119, 119);
+/* margin-bottom: 7px; */
 
 
 }
@@ -147,6 +148,8 @@ color:#e25822}
 .Messagesdisplay_emogies {
     position: absolute;
     bottom: -10px;
+    display: flex;
+    flex-direction: row;
 }
 
 .Messagesdisplay_emogies div {

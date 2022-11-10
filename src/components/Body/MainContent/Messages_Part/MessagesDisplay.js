@@ -19,7 +19,7 @@ import { toast } from 'react-toastify';
 
 const MessagesDisplay = ({
     groupid, messid,message,senderid,sendermail,sentby,time,dislikes,
-    likes,loves, timechecktime,updated}) => {
+    likes,loves, timechecktime,updated,fires}) => {
 
 let updatedmessage='';
 if(updated){
@@ -234,9 +234,22 @@ let getLikesData=()=>{
         ))
 }
 
+let [dislikesData,setdislikesData]=useState([])
+
+let getdislikesData=()=>{
+    db.collection('users').doc(selectuserinfo?.userid).
+        collection('dislikes').onSnapshot((data)=>(
+            setdislikesData((data.docs.map((item)=>({
+                id:item.id,
+                data:item.data()
+            }))))
+        ))
+}
+
 useEffect(()=>{
 
     getLikesData()
+    getdislikesData()
 },[message])
 
 
@@ -249,6 +262,18 @@ likesData.map((item,indx)=>{
     likesid.push(item.id)
 
 })
+
+
+let dislikesmesid=[];
+
+let dislikesid=[]
+
+dislikesData.map((item,indx)=>{
+    dislikesmesid.push(item.data.messid)
+    dislikesid.push(item.id)
+
+})
+
 
 let handleClickIcons=(name)=>{
     if(name==='like'){
@@ -292,10 +317,45 @@ else{
     setMoreinfo(false)
 
 
-    }}
+    }
+
+
+}
 
     if(name==='dislike'){
-        alert('added to the dislike')
+        if(dislikesmesid.includes(messid)){
+            // console.log(likesid[(dislikesmesid.indexOf(messid))])
+            db.collection('users').doc(selectuserinfo?.userid).
+            collection('dislikes').doc(dislikesid[(dislikesmesid.indexOf(messid))]).delete()
+            
+            db.collection('group').doc(groupid).collection('messages').doc(messid).update({
+                dislikes:(dislikes-1)
+            })
+            alert('deleted from the dislike')
+
+        
+            setMoreinfo(false)
+        
+        
+        }
+        
+        else{
+        
+        
+                db.collection('users').doc(selectuserinfo?.userid).
+                collection('dislikes').add({
+                    groupid, messid,message,senderid,sendermail,sentby,groupname
+                })
+                
+                db.collection('group').doc(groupid).collection('messages').doc(messid).update({
+                    dislikes:(dislikes+1)
+                })
+                alert('added to the dislike')
+
+            setMoreinfo(false)
+        
+        
+            }
     }
 
     if(name==='fire'){
@@ -429,7 +489,7 @@ else{
                 style={
                     {
                         // color:'#E8BEAC',
-                        color:'#c68642'
+                        color:  (likesmesid.includes(messid))? 'red':'#c68642'
                         
                     }
                 }
@@ -439,6 +499,29 @@ else{
                 <span>
                
                 {likes}
+                
+                    </span>
+                
+                </div>}
+
+
+                {dislikes>0 &&
+               <div>
+                <span>
+                <ThumbDownAltIcon
+                style={
+                    {
+                        // color:'#E8BEAC',
+                        color:(dislikesmesid.includes(messid))?'red': '#c68642'
+                        
+                    }
+                }
+/>
+                </span>
+
+                <span>
+               
+                {dislikes}
                 
                     </span>
                 

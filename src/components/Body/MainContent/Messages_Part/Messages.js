@@ -359,7 +359,7 @@ let reqmessage;
             sendermail={item.data.sendermail} sentby={item.data.sentby}
             time={item.data.time} dislikes={item.data.dislikes}
             likes={item.data.likes} loves={item.data.loves} timechecktime={item.data.timechecktime}
-            groupid={groupid} updated={item.data.updated}
+            groupid={groupid} updated={item.data.updated} fires={item.data.fires}
             />
             
             </div>
