@@ -13,7 +13,9 @@ import ThumbDownAltIcon from '@mui/icons-material/ThumbDownAlt';
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
 import { db } from '../../../../Firebase';
 import { toast } from 'react-toastify';
+import moment from 'moment';
 // import firebase from 'firebase/compat/app';
+// import moment from 'moment/moment';
 
 
 
@@ -534,6 +536,34 @@ else{
 }
 
 export default MessagesDisplay
+// var a = moment([2007, 0, 29]);
+// var b = moment([2007, 0, 28]);
+// a.diff(b, 'days') // 1
+
+
+// var a = moment('2016-06-06T21:03:55');//now
+// var b = moment('2016-05-06T20:03:55');
+
+// console.log(a.diff(b, 'minutes')) // 44700
+// console.log(a.diff(b, 'hours')) // 745
+// console.log(a.diff(b, 'days')) // 31
+// console.log(a.diff(b, 'weeks')) // 4
+
+// var duration = moment.duration(end.diff(startTime));
+// var hours = duration.asHours();
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
